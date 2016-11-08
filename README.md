@@ -36,7 +36,7 @@ Role is tested against the following distributions (docker images):
   * Debian Jessie
   * Arch Linux
 
-To test the role from sources using the command line using molecule:
+To test the role from sources using the command line with molecule run:
 ```
 molecule test
 ```
