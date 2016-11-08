@@ -1,0 +1,21 @@
+---
+#Container image name
+docker_registry_image: registry
+
+# Host registry path
+docker_registry_storage_path: /var/cache/docker/registry
+
+# Container image registry volume
+docker_registry_storage_volume: /var/lib/registry
+
+# Container name
+docker_registry_service_name: docker_registry
+
+# Container state
+docker_registry_service_status: started
+
+# Container restart policy
+docker_registry_service_restart_policy: on-failure
+
+# Container and host port
+docker_registry_service_port: 5000

@@ -1,0 +1,43 @@
+---
+driver:
+  name: docker
+
+docker:
+  containers:
+    - name: ansible-docker-registry-jessie
+      image: debian
+      image_version: jessie
+      privileged: True
+      volume_mounts:
+          - '/var/run/docker.sock:/var/run/docker.sock'
+      ansible_groups:
+        - test
+#    - name: ansible-docker-registry-xenial
+#      image: ubuntu
+#      image_version: xenial
+#      ansible_groups:
+#        - test
+#    - name: ansible-docker-registry-centos7
+#      image: centos
+#      image_version: 7
+#      ansible_groups:
+#        - test
+#    - name: ansible-docker-registry-arch
+#      image: pritunl/archlinux
+#      image_version: latest
+#      dockerfile: docker/arch.dockerfile
+#      command: /bin/bash
+#      ansible_groups:
+#        - test
+
+ansible:
+  requirements_file: dependencies.yml
+
+molecule:
+  ignore_paths:
+    - .git
+    - .ropeproject
+    - .molecule
+
+verifier:
+  name: testinfra
