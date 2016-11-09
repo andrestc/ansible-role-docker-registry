@@ -2,6 +2,9 @@
 #Container image name
 docker_registry_image: registry
 
+# Whether to pull the image in every run
+docker_registry_image_pull: false
+
 # Host registry path
 docker_registry_storage_path: /var/cache/docker/registry
 

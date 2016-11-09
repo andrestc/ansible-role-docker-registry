@@ -3,9 +3,11 @@
 - name: "include variable overrides"
   include_vars: "{{ item }}"
   with_first_found:
-    - "vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-    - "vars/{{ ansible_distribution }}.yml"
-    - "vars/{{ ansible_os_family }}.yml"
+    - files:
+      - "vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+      - "vars/{{ ansible_distribution }}.yml"
+      - "vars/{{ ansible_os_family }}.yml"
+      skip: true
   tags:
     - docker-registry
 
@@ -18,7 +20,7 @@
       - "{{ docker_registry_service_port }}:{{ docker_registry_service_port }}"
     state: "{{ docker_registry_service_status }}"
     restart_policy: "{{ docker_registry_service_restart_policy }}"
-    pull: "true"
+    pull: "{{ docker_registry_image_pull }}"
     volumes:
       - "{{ docker_registry_storage_path }}:{{ docker_registry_storage_volume }}"
   become: yes
