@@ -4,9 +4,9 @@ driver:
 
 docker:
   containers:
-    - name: ansible-docker-registry-xenial
-      image: ubuntu
-      image_version: xenial
+    - name: ansible-docker-registry-jessie
+      image: debian
+      image_version: jessie
       privileged: True
       volume_mounts:
           - '/var/run/docker.sock:/var/run/docker.sock'
