@@ -1,3 +1,4 @@
+# vim: ts=2 sw=2 et :
 ---
 driver:
   name: docker
@@ -13,8 +14,9 @@ docker:
       ansible_groups:
         - test
 
-ansible:
+dependency:
   requirements_file: dependencies.yml
+  name: galaxy
 
 molecule:
   ignore_paths:
