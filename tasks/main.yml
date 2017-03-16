@@ -1,3 +1,4 @@
+# vim: ts=2 sw=2 et :
 ---
 # Include variable definitions
 - name: "include variable overrides"
@@ -26,29 +27,3 @@
   become: yes
   tags:
     - docker-registry
-
-# Set up service file
-#- name: configure docker-registry
-#  template: >
-#    src="{{ docker_registry_conf_template }}"
-#    dest="{{ docker_registry_conf_path }}"
-#  become: no
-#  when: docker-registry_conf_path is defined
-#  tags:
-#    - "docker-registry"
-#    - "docker-registry_conf"
-#  notify:
-#    - restart docker-registry
-
-# Manage service
-#- name: manage docker-registry services
-#  service: >
-#    name="{{ docker_registry_service_name }}"
-#    state="{{ docker_registry_service_status }}"
-#  become: yes
-#  when: docker-registry_service_name is defined
-#  tags:
-#    - docker-registry
-#    - docker-registry_service
-#  notify:
-#    - restart docker-registry
